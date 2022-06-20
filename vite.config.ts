@@ -1,10 +1,14 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
+import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
 
 // 解决了类型“ImportMeta”上不存在属性“env”报错问题
 export default ({mode}) => {
   return defineConfig({
-    plugins: [react()],
+    plugins: [
+      react(),
+      vanillaExtractPlugin(),
+    ],
     base: '/test_app/',
     resolve: {
       alias: {
