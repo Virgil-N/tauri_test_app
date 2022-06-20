@@ -1,10 +1,9 @@
 # TIPS
 
-## DONE
-
 ## TODO
 
 1. splash screen 未完成，中途遇到找不到文件错误。
+1. layout 单页面布局未添加。
 
 ## PROJECT
 
