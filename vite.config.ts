@@ -13,7 +13,8 @@ export default ({mode}) => {
     resolve: {
       alias: {
         '@': '/src'
-      }
+      },
+      // extensions: ['.tsx', '.ts', '.js', '.jsx', 'json'],
     },
     // prevent vite from obscuring rust errors
     clearScreen: false,
@@ -21,6 +22,9 @@ export default ({mode}) => {
     server: {
       port: 3000,
       strictPort: true,
+      // watch: {
+      //   usePolling: true,
+      // },
     },
     // to make use of `TAURI_PLATFORM`, `TAURI_ARCH`, `TAURI_FAMILY`,
     // `TAURI_PLATFORM_VERSION`, `TAURI_PLATFORM_TYPE` and `TAURI_DEBUG`
