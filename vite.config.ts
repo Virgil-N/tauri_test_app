@@ -5,26 +5,27 @@ import react from '@vitejs/plugin-react'
 export default ({mode}) => {
   return defineConfig({
     plugins: [
-      react({
-        babel: {
-          // Your plugins run before any built-in transform (eg: Fast Refresh)
-          plugins: [
-            [
-              "styled-jsx/babel",
-              {
-                plugins: [
-                  ["@styled-jsx/plugin-sass"]
-                ],
-                sourceMaps: true
-              }
-            ]
-          ],
-          // Use .babelrc files
-          // babelrc: true,
-          // Use babel.config.js files
-          // configFile: true,
-        }
-      }),
+      react(),
+      // react({
+      //   babel: {
+      //     // Your plugins run before any built-in transform (eg: Fast Refresh)
+      //     plugins: [
+      //       [
+      //         "styled-jsx/babel",
+      //         {
+      //           plugins: [
+      //             ["@styled-jsx/plugin-sass"]
+      //           ],
+      //           sourceMaps: true
+      //         }
+      //       ]
+      //     ],
+      //     // Use .babelrc files
+      //     // babelrc: true,
+      //     // Use babel.config.js files
+      //     // configFile: true,
+      //   }
+      // }),
     ],
     base: '/test_app/',
     resolve: {

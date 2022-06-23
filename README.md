@@ -4,7 +4,7 @@
 
 1. splash screen 未完成，中途遇到找不到文件错误。
 1. layout 单页面布局未添加。
-1. styled-jsx 使用出现问题，报错`ReferenceError: __dirname is not defined`。
+1. styled-jsx 使用出现问题，报错`ReferenceError: __dirname is not defined`(目前以暂时不使用)。
 
 ## PROJECT
 
