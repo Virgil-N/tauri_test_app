@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-23 04:52:50
+ * Last Modified: 2022-06-23 09:32:40
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -11,7 +11,7 @@
  * -----
  */
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, SetStateAction } from 'react'
 import {
   Center,
   Flex,
@@ -33,99 +33,57 @@ import {
 import { TbLogin, TbUser, TbLock } from 'react-icons/tb'
 import { useDisclosure } from '@chakra-ui/react'
 import { styled } from '@stitches/react'
-import logo from '@/assets/logo.svg'
 
 
 function Login() {
-  const [count, setCount] = useState(0)
+  const [name, setName] = useState('')
+  const [password, setPassword] = useState('')
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const cancelRef = useRef(null)
+  const handleInputChange =
+    (e: { target: { value: SetStateAction<string> } }, item: string) => {
+      if (item === 'name') {
+        setName(e.target.value)
+      } else if (item === 'password') {
+        setPassword(e.target.value)
+      } else {
+        // 
+      }
+    }
 
-  const Div = styled('div', {
-    '&.login_wrap': {
-      width: '100VW',
-      height: '100VH',
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'rgba(148, 85, 221, 0.8)',
-    },
-
-    '.card': {
-      width: '50VW',
-      height: '60VH',
-      maxWidth: '36rem',
-      minWidth: '28rem',
-      minHeight: '22rem',
-      backgroundColor: 'rgb(148, 85, 221)',
-    },
-
-    '.head': {
-      width: '100%',
-      height: '3rem',
-      lineHeight: '3rem',
-      backgroundColor: 'yellow',
-
-      'p': {
-        fontSize: '1.8rem',
-        fontWeight: 500,
-        textAlign: 'center',
-      },
-    },
-    
-    '.body': {
-      width: '100%',
-      height: 'calc(100% - 5VH)',
-      backgroundColor: 'orange',
-    },
-  })
-
+  const isNameError = true
+  const isPasswordError = password === ''
 
   useEffect(() => {
     // console.log(import.meta.env)
   }, [])
 
   return (
-    // <Div className='login_wrap'>
-    //   <div className='card'>
-    //     <div className='head'>
-    //       <p>Cargo Tauri Vite React</p>
-    //     </div>
-    //     <div className='body'>
-    //     <Container maxW='md' minH='100%' bg='blue.600' color='white'>
-    //       <FormControl>
-    //         <FormLabel htmlFor='用户名'>用户名</FormLabel>
-    //           <Input></Input>
-    //       </FormControl>
-    //     </Container>
-    //     </div>
-    //   </div>
-    // </Div>
     <Center
       w='100%'
       h='100%'
-      backgroundImage="url('/test_app/assets/login_bg.jpg')"
       backgroundPosition='center'
+      backgroundSize='100% 100%'
       backgroundRepeat='no-repeat'
+      backgroundImage={new URL('/src/assets/login_bg.jpg', import.meta.url).href}
     >
       <Flex
         bg='tomato'
         w='50VW'
         h='60VH'
-        minW='36rem'
+        minW='30rem'
         minH='24rem'
-        maxW='38rem'
+        maxW='32rem'
         maxH='26rem'
         color='white'
         direction='column'
+        boxShadow='dark-lg'
+        bgGradient='linear(to-br, purple.400, green.200)'
         p={8}
       >
         <Box h='5rem' flexShrink='0'>
           <Heading
             h='100%'
-            size='lg'
+            fontSize='1.6rem'
             lineHeight='5rem'
             textAlign='center'
           >
@@ -138,36 +96,68 @@ function Login() {
           flexDirection='column'
           justifyContent='center'
         >
-          <Flex alignItems='center'>
+          <Flex alignItems='baseline'>
             <Text w='6rem' textAlign='right' mr='2rem'>用户名</Text>
-            <InputGroup mr='2rem'>
-              <InputLeftElement
-                pointerEvents='none'
-                children={<TbUser color='gray.300' />}
-              />
-              <Input />
-            </InputGroup>
+            <FormControl mr='2rem' isInvalid={isNameError}>
+              <InputGroup>
+                <InputLeftElement
+                  pointerEvents='none'
+                  children={<TbUser color='gray.300' />}
+                />
+                <Input
+                  value={name}
+                  onChange={(e) => handleInputChange(e, 'name')}
+                />
+              </InputGroup>
+              {!(name === '') ? (
+                <FormHelperText fontSize='0.6rem'>
+                   用户名字符个数大于等于三位且不能包含非法字符
+                </FormHelperText>
+              ) : (
+                <FormErrorMessage fontSize='0.6rem'>
+                  用户名必须填写
+                </FormErrorMessage>
+              )}
+            </FormControl>
+            
           </Flex>
-          <Flex alignItems='center' mt='2rem'>
+          <Flex alignItems='baseline' mt='1rem'>
             <Text w='6rem' textAlign='right' mr='2rem'>密码</Text>
-            <InputGroup mr='2rem'>
-              <InputLeftElement
-                pointerEvents='none'
-                children={<TbLock color='gray.300' />}
-              />
-              <Input type='password' />
-            </InputGroup>
+            <FormControl mr='2rem' isInvalid={isPasswordError}>
+              <InputGroup mr='2rem'>
+                <InputLeftElement
+                  pointerEvents='none'
+                  children={<TbLock color='gray.300' />}
+                />
+                <Input
+                  value={password}
+                  onChange={(e) => handleInputChange(e, 'password')}
+                  type='password'
+                />
+              </InputGroup>
+              {!isPasswordError ? (
+                <FormHelperText fontSize='0.6rem'>
+                   密码字符个数大于等于六位且不能包含非法字符
+                </FormHelperText>
+              ) : (
+                <FormErrorMessage fontSize='0.6rem'>
+                  密码必须填写
+                </FormErrorMessage>
+              )}
+            </FormControl>
           </Flex>
         </Box>
         <Box h='4rem' flexShrink='0'>
           <Stack
+            h='100%'
             direction='row'
             display='flex'
             flexDirection='row'
             justifyContent='center'
+            alignItems='center'
             spacing={4}
           >
-            <Button leftIcon={<TbLogin />} colorScheme='teal' variant='outline'>
+            <Button colorScheme='teal' variant='outline'>
               注册
             </Button>
             <Button leftIcon={<TbLogin />} colorScheme='teal' variant='solid'>
