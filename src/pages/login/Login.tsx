@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-24 11:28:03
+ * Last Modified: 2022-06-24 11:38:19
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -44,10 +44,9 @@ function Login() {
       if (item === 'name') {
         setName(e.target.value)
         setIsNameError(true)
-        console.log(e.target.value, new RegExp(/[`~!@#$%^&*()_+<>?:"{},./;'[\]]/).test(e.target.value.toString()))
         if (e.target.value === '') {
           setNameErrorMsg('用户名不能为空')
-        } else if (new RegExp(/[`~!@#$%^&*()+-=<>?:"{},./;'[\]|\\]/).test(e.target.value.toString())) {
+        } else if (new RegExp(/[`~!@#$%^&*()+=<>?:"{},./;'[\]|\\-]/).test(e.target.value.toString())) {
           setNameErrorMsg('用户名包含非法字符')
         } else if (e.target.value.length > 12) {
           setNameErrorMsg('用户名字符个数不超过十二')
@@ -60,7 +59,7 @@ function Login() {
         setIsPasswordError(true)
         if (e.target.value === '') {
           setPasswordErrorMsg('密码不能为空')
-        } else if (new RegExp(/[`~!@#$%^&*()+-=<>?:"{},./;'[\]|\\]/).test(e.target.value.toString())) {
+        } else if (new RegExp(/[`~!@#$%^&*()+=<>?:"{},./;'[\]|\\-]/).test(e.target.value.toString())) {
           setPasswordErrorMsg('密码包含非法字符')
         } else if (e.target.value.length > 18) {
           setPasswordErrorMsg('密码字符个数不超过十八')
@@ -72,6 +71,10 @@ function Login() {
         // 
       }
     }
+  
+  const userLogin = () => {
+    console.log(name, password)
+  }
 
   useEffect(() => {
     // console.log(import.meta.env)
@@ -180,7 +183,12 @@ function Login() {
             <Button colorScheme='teal' variant='outline'>
               注册
             </Button>
-            <Button leftIcon={<TbLogin />} colorScheme='teal' variant='solid'>
+            <Button
+              leftIcon={<TbLogin />}
+              colorScheme='teal'
+              variant='solid'
+              onClick={userLogin}
+            >
               登录
             </Button>
           </Stack>
