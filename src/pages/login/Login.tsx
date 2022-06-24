@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-24 11:38:19
+ * Last Modified: 2022-06-24 03:32:20
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -12,6 +12,7 @@
  */
 
 import { useEffect, useState, SetStateAction } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   Center,
   Flex,
@@ -32,6 +33,7 @@ import { styled } from '@stitches/react'
 
 
 function Login() {
+  let navigate = useNavigate()
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const [nameErrorMsg, setNameErrorMsg] = useState('')
@@ -44,10 +46,10 @@ function Login() {
       if (item === 'name') {
         setName(e.target.value)
         setIsNameError(true)
-        if (e.target.value === '') {
-          setNameErrorMsg('用户名不能为空')
-        } else if (new RegExp(/[`~!@#$%^&*()+=<>?:"{},./;'[\]|\\-]/).test(e.target.value.toString())) {
+        if (new RegExp(/[`~!@#$%^&*()+=<>?:"{},./;'[\]|\\-]/).test(e.target.value.toString())) {
           setNameErrorMsg('用户名包含非法字符')
+        } else if (e.target.value.length < 3) {
+          setNameErrorMsg('用户名字符个数不少于三位')
         } else if (e.target.value.length > 12) {
           setNameErrorMsg('用户名字符个数不超过十二')
         } else {
@@ -57,10 +59,10 @@ function Login() {
       } else if (item === 'password') {
         setPassword(e.target.value)
         setIsPasswordError(true)
-        if (e.target.value === '') {
-          setPasswordErrorMsg('密码不能为空')
-        } else if (new RegExp(/[`~!@#$%^&*()+=<>?:"{},./;'[\]|\\-]/).test(e.target.value.toString())) {
+        if (new RegExp(/[`~!@#$%^&*()+=<>?:"{},./;'[\]|\\-]/).test(e.target.value.toString())) {
           setPasswordErrorMsg('密码包含非法字符')
+        } else if (e.target.value.length < 6) {
+          setPasswordErrorMsg('密码字符个数不少于六位')
         } else if (e.target.value.length > 18) {
           setPasswordErrorMsg('密码字符个数不超过十八')
         } else {
@@ -74,6 +76,7 @@ function Login() {
   
   const userLogin = () => {
     console.log(name, password)
+    navigate('/home')
   }
 
   useEffect(() => {
@@ -160,7 +163,7 @@ function Login() {
               </InputGroup>
               {!isPasswordError ? (
                 <FormHelperText fontSize='0.6rem'>
-                   密码字符个数六到十二位且不能包含非法字符
+                   密码字符个数六到十八位且不能包含非法字符
                 </FormHelperText>
               ) : (
                 <FormErrorMessage fontSize='0.6rem'>

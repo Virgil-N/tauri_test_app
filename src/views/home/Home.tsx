@@ -1,9 +1,9 @@
 /*
- * Created Date: 2022-06-22 02:54:05
+ * Created Date: 2022-06-24 02:00:01
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-22 02:54:44
+ * Last Modified: 2022-06-24 03:32:56
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -11,9 +11,12 @@
  * -----
  */
 
-html, body {
-  width: 100VW;
-  height: 100VH;
-  margin: 0;
-  padding: 0;
+function Home() {
+  return (
+    <div>
+      <p>123456dshurerkhjd</p>
+    </div>
+  )
 }
+
+export default Home
