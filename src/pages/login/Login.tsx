@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-23 09:32:40
+ * Last Modified: 2022-06-24 11:28:03
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -17,41 +17,61 @@ import {
   Flex,
   Box,
   Text,
-  Heading,
   Stack,
-  InputGroup,
-  InputLeftElement,
-  Spacer,
-  Container,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Button,
   Input,
+  Button,
+  Heading,
+  InputGroup,
+  FormControl,
+  FormHelperText,
+  FormErrorMessage,
+  InputLeftElement,
 } from '@chakra-ui/react'
 import { TbLogin, TbUser, TbLock } from 'react-icons/tb'
-import { useDisclosure } from '@chakra-ui/react'
 import { styled } from '@stitches/react'
 
 
 function Login() {
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
+  const [nameErrorMsg, setNameErrorMsg] = useState('')
+  const [passwordErrorMsg, setPasswordErrorMsg] = useState('')
+  const [isNameError, setIsNameError] = useState(false)
+  const [isPasswordError, setIsPasswordError] = useState(false)
 
   const handleInputChange =
     (e: { target: { value: SetStateAction<string> } }, item: string) => {
       if (item === 'name') {
         setName(e.target.value)
+        setIsNameError(true)
+        console.log(e.target.value, new RegExp(/[`~!@#$%^&*()_+<>?:"{},./;'[\]]/).test(e.target.value.toString()))
+        if (e.target.value === '') {
+          setNameErrorMsg('用户名不能为空')
+        } else if (new RegExp(/[`~!@#$%^&*()+-=<>?:"{},./;'[\]|\\]/).test(e.target.value.toString())) {
+          setNameErrorMsg('用户名包含非法字符')
+        } else if (e.target.value.length > 12) {
+          setNameErrorMsg('用户名字符个数不超过十二')
+        } else {
+          setNameErrorMsg('')
+          setIsNameError(false)
+        }
       } else if (item === 'password') {
         setPassword(e.target.value)
+        setIsPasswordError(true)
+        if (e.target.value === '') {
+          setPasswordErrorMsg('密码不能为空')
+        } else if (new RegExp(/[`~!@#$%^&*()+-=<>?:"{},./;'[\]|\\]/).test(e.target.value.toString())) {
+          setPasswordErrorMsg('密码包含非法字符')
+        } else if (e.target.value.length > 18) {
+          setPasswordErrorMsg('密码字符个数不超过十八')
+        } else {
+          setPasswordErrorMsg('')
+          setIsPasswordError(false)
+        }
       } else {
         // 
       }
     }
-
-  const isNameError = true
-  const isPasswordError = password === ''
 
   useEffect(() => {
     // console.log(import.meta.env)
@@ -109,13 +129,13 @@ function Login() {
                   onChange={(e) => handleInputChange(e, 'name')}
                 />
               </InputGroup>
-              {!(name === '') ? (
+              {!isNameError ? (
                 <FormHelperText fontSize='0.6rem'>
-                   用户名字符个数大于等于三位且不能包含非法字符
+                   用户名字符个数三到十二位且不能包含非法字符
                 </FormHelperText>
               ) : (
                 <FormErrorMessage fontSize='0.6rem'>
-                  用户名必须填写
+                  {nameErrorMsg}
                 </FormErrorMessage>
               )}
             </FormControl>
@@ -137,11 +157,11 @@ function Login() {
               </InputGroup>
               {!isPasswordError ? (
                 <FormHelperText fontSize='0.6rem'>
-                   密码字符个数大于等于六位且不能包含非法字符
+                   密码字符个数六到十二位且不能包含非法字符
                 </FormHelperText>
               ) : (
                 <FormErrorMessage fontSize='0.6rem'>
-                  密码必须填写
+                  {passwordErrorMsg}
                 </FormErrorMessage>
               )}
             </FormControl>
