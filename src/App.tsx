@@ -8,6 +8,9 @@ import { invoke } from '@tauri-apps/api/tauri'
 
 function App() {
 
+  // 等tauri版本更新修复这个bug
+  // const invoke = window.__TAURI__.invoke
+
   const globalStyles = globalCss({
     '*': {
       margin: 0,

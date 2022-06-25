@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-24 03:32:20
+ * Last Modified: 2022-06-25 09:19:01
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -30,7 +30,6 @@ import {
 } from '@chakra-ui/react'
 import { TbLogin, TbUser, TbLock } from 'react-icons/tb'
 import { styled } from '@stitches/react'
-
 
 function Login() {
   let navigate = useNavigate()
