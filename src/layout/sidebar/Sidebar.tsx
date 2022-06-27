@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-27 04:11:43
+ * Last Modified: 2022-06-27 04:53:07
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -11,11 +11,11 @@
  * -----
  */
 
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Flex } from '@chakra-ui/react'
 import { TbMovie, TbRefresh } from 'react-icons/tb'
 import CustomIconButton from '@/components/custom_icon_button/CustomIconButton'
-import { useState } from 'react'
 
 function Sidebar() {
   const navigate = useNavigate()
