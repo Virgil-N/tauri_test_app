@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-27 04:33:32
+ * Last Modified: 2022-06-27 10:07:35
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -99,6 +99,7 @@ function Login() {
   ])
 
   return (
+    !isNameError ? <Navigate to="/video" replace={true} /> :
     <Center
       w='100%'
       h='100%'
@@ -107,8 +108,6 @@ function Login() {
       backgroundRepeat='no-repeat'
       backgroundImage={new URL('/src/assets/login_bg.jpg', import.meta.url).href}
     >
-      {/* 跳过登录页面 */}
-      <Navigate to="/home" replace={true} />
       <Flex
         bg='tomato'
         w='50VW'
