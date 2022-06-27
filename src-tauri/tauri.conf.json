@@ -60,15 +60,7 @@
         "width": 800,
         "height": 600,
         "resizable": true,
-        "title": "Test",
-        "visible": false
-      },
-      {
-        "width": 800,
-        "height": 600,
-        "decorations": true,
-        "url": "/test_app/splashscreen.html",
-        "label": "splashscreen"
+        "title": "Test"
       }
     ]
   }

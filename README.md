@@ -1,5 +1,26 @@
 # TIPS
 
+## TEMP
+
+- splashscreen 部分临时内容，等待作者发布1.01版本修复后添加
+
+  ```
+  {
+    "width": 800,
+    "height": 600,
+    "decorations": true,
+    "url": "/test_app/splashscreen.html",
+    "label": "splashscreen"
+  }
+
+  let context = tauri::generate_context!();
+  tauri::Builder::default()
+    .invoke_handler(tauri::generate_handler![close_splashscreen])
+    .menu(tauri::Menu::os_default(&context.package_info().name))
+    .run(context)
+    .expect("error while running tauri application"); 
+  ```
+
 ## TODO
 
 1. splash screen 未完成，中途遇到找不到文件错误。
