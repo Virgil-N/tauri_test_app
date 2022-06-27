@@ -1,9 +1,9 @@
 /*
- * Created Date: 2022-06-24 02:00:01
+ * Created Date: 2022-06-27 03:03:23
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-27 04:35:28
+ * Last Modified: 2022-06-27 03:09:25
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -11,12 +11,10 @@
  * -----
  */
 
-function Home() {
+function Video() {
   return (
-    <div>
-      <p>Home</p>
-    </div>
+    <div>asdd</div>
   )
 }
 
-export default Home
+export default Video

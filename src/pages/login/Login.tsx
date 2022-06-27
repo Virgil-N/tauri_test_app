@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-25 09:19:01
+ * Last Modified: 2022-06-27 04:33:32
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -11,8 +11,8 @@
  * -----
  */
 
-import { useEffect, useState, SetStateAction } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useRef, useEffect, useState, SetStateAction } from 'react'
+import { useNavigate, Navigate } from 'react-router-dom'
 import {
   Center,
   Flex,
@@ -31,8 +31,20 @@ import {
 import { TbLogin, TbUser, TbLock } from 'react-icons/tb'
 import { styled } from '@stitches/react'
 
+const useIsMountedRef = () => {
+  const isMountedRef = useRef(false)
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false
+    }
+  })
+  return isMountedRef
+}
+
 function Login() {
-  let navigate = useNavigate()
+  const isMountedRef = useIsMountedRef()
+  const navigate = useNavigate()
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const [nameErrorMsg, setNameErrorMsg] = useState('')
@@ -75,12 +87,16 @@ function Login() {
   
   const userLogin = () => {
     console.log(name, password)
-    navigate('/home')
+    navigate('/video')
   }
 
   useEffect(() => {
-    // console.log(import.meta.env)
-  }, [])
+    if (isMountedRef.current) {
+      // console.log(import.meta.env)
+    }
+  }, [
+    isMountedRef
+  ])
 
   return (
     <Center
@@ -91,6 +107,8 @@ function Login() {
       backgroundRepeat='no-repeat'
       backgroundImage={new URL('/src/assets/login_bg.jpg', import.meta.url).href}
     >
+      {/* 跳过登录页面 */}
+      <Navigate to="/home" replace={true} />
       <Flex
         bg='tomato'
         w='50VW'
