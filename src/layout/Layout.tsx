@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-27 10:51:24
+ * Last Modified: 2022-06-28 10:41:16
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -41,12 +41,16 @@ function Layout() {
       <Box w='7.2rem' flexShrink='0' padding='0.6rem'>
         <Sidebar />
       </Box>
+      <Divider orientation='vertical' />
       <Box
         flexGrow='1'
         display='flex'
         flexDirection='row'
+        pt='1.2rem'
+        pb='1.2rem'
+        pl='0.6rem'
+        pr='0.6rem'
       >
-        <Divider orientation='vertical' />
         <Outlet />
       </Box>
     </Flex>

@@ -5,7 +5,10 @@ import Login from '@/pages/login/Login'
 import Layout from '@/layout/Layout'
 import Home from '@/views/home/Home'
 import Video from '@/views/video/Video'
-// import { invoke } from '@tauri-apps/api/tauri'
+import Queue from '@/views/queue/Queue'
+import Convert from '@/views/convert/Convert'
+import Settings from '@/views/settings/Settings'
+import { invoke } from '@tauri-apps/api/tauri'
 
 const useIsMountedRef = () => {
   const isMountedRef = useRef(false)
@@ -31,6 +34,7 @@ function App() {
     'html, body': {
       width: '100VW',
       height: '100VH',
+      fontSize: '1em',
     },
     '#root': {
       width: '100VW',
@@ -42,13 +46,10 @@ function App() {
 
   useEffect(() => {
     if (isMountedRef.current) {
-      // document.addEventListener('DOMContentLoaded', () => {
-      //   console.log(invoke);
-      //   const close_splashscreen_timeout = setTimeout(() => {
-      //     invoke('close_splashscreen')
-      //     window.clearInterval(close_splashscreen_timeout)
-      //   }, 3000)
-      // })
+      // const close_splashscreen_timeout = setTimeout(() => {
+      //   invoke('close_splashscreen')
+      //   window.clearInterval(close_splashscreen_timeout)
+      // }, 3000)
     }
   }, [
     isMountedRef
@@ -61,6 +62,9 @@ function App() {
         <Route element={<Layout />}>
           {/* <Route path='/home' element={<Home />}></Route> */}
           <Route path='/video' element={<Video />}></Route>
+          <Route path='/queue' element={<Queue />}></Route>
+          <Route path='/convert' element={<Convert />}></Route>
+          <Route path='/settings' element={<Settings />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

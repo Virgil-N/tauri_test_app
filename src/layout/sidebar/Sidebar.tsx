@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-27 04:53:07
+ * Last Modified: 2022-06-28 11:36:31
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -14,7 +14,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Flex } from '@chakra-ui/react'
-import { TbMovie, TbRefresh } from 'react-icons/tb'
+import { TbDownload, TbList, TbRefresh, TbSettings } from 'react-icons/tb'
 import CustomIconButton from '@/components/custom_icon_button/CustomIconButton'
 
 function Sidebar() {
@@ -32,8 +32,8 @@ function Sidebar() {
       flexDirection='column'
     >
       <CustomIconButton
-        as={TbMovie}
-        text='Videos'
+        as={TbDownload}
+        text='Download'
         boxSize='6rem'
         iconSize='4rem'
         fontSize='1rem'
@@ -43,6 +43,17 @@ function Sidebar() {
         onClick={(e: any) => pressBtn(e, 0, '/video')}
       />
       <CustomIconButton
+        as={TbList}
+        text='Queue'
+        boxSize='6rem'
+        iconSize='4rem'
+        fontSize='1rem'
+        borderRadius='6%'
+        color='teal'
+        isActive={activeIndex === 1}
+        onClick={(e: any) => pressBtn(e, 1, '/queue')}
+      />
+      <CustomIconButton
         as={TbRefresh}
         text='Convert'
         boxSize='6rem'
@@ -50,8 +61,19 @@ function Sidebar() {
         fontSize='1rem'
         borderRadius='6%'
         color='teal'
-        isActive={activeIndex === 1}
-        onClick={(e: any) => pressBtn(e, 1, '/convert')}
+        isActive={activeIndex === 2}
+        onClick={(e: any) => pressBtn(e, 2, '/convert')}
+      />
+      <CustomIconButton
+        as={TbSettings}
+        text='Settings'
+        boxSize='6rem'
+        iconSize='4rem'
+        fontSize='1rem'
+        borderRadius='6%'
+        color='teal'
+        isActive={activeIndex === 3}
+        onClick={(e: any) => pressBtn(e, 3, '/settings')}
       />
     </Flex>
   )
