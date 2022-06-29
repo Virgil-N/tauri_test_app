@@ -81,7 +81,18 @@
         "width": 1000,
         "height": 640,
         "resizable": true,
-        "title": "Test"
+        "title": "Test",
+        "center": true,
+        "visible": false
+      },
+      {
+        "width": 1000,
+        "height": 640,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "center": true,
+        "url": "/test_app/splashscreen.html",
+        "label": "splashscreen"
       }
     ]
   }

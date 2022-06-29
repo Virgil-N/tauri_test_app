@@ -3,15 +3,15 @@
   windows_subsystem = "windows"
 )]
 
-// use tauri::Manager;
+use tauri::Manager;
 
-// #[tauri::command]
-// fn close_splashscreen(window: tauri::Window) {
-//   if let Some(splashscreen) = window.get_window("splashscreen") {
-//     splashscreen.close().unwrap();
-//   }
-//   window.get_window("main").unwrap().show().unwrap();
-// }
+#[tauri::command]
+async fn close_splashscreen(window: tauri::Window) {
+  if let Some(splashscreen) = window.get_window("splashscreen") {
+    splashscreen.close().unwrap();
+  }
+  window.get_window("main").unwrap().show().unwrap();
+}
 
 mod command;
 
@@ -58,12 +58,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
   let context = tauri::generate_context!();
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![
+      close_splashscreen,
+      js_command,
       command::show,
       command::exists,
       command::disk_free_size,
     ])
-    .invoke_handler(tauri::generate_handler![js_command])
-    // .invoke_handler(tauri::generate_handler![close_splashscreen])
     .menu(tauri::Menu::os_default(&context.package_info().name))
     .run(context)
     .expect("error while running tauri application");

@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-28 03:24:55
+ * Last Modified: 2022-06-29 10:42:09
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -54,26 +54,24 @@ function Video() {
 
   const selectFolder = async () => {
     const selected = await dialog.open({directory: true, multiple: false})
-    console.log(selected)
     if (selected != null) {
       setCurrentPath(selected.toString())
+      showFreeSpace(selected.toString())
     }
   }
 
-  const showFreeSpace = async () => {
-    const freeSpace = await invoke('disk_free_size', {path: currentPath}) as SetStateAction<number>
-    console.log(freeSpace)
+  const showFreeSpace = async (path: String) => {
+    const freeSpace = await invoke('disk_free_size', {path}) as SetStateAction<number>
     setAvailableSpace(freeSpace)
   }
 
   const startDownload = () => {
     console.log(url)
-    
   }
 
   useEffect(() => {
     if (isMountedRef.current) {
-      showFreeSpace()
+      showFreeSpace(currentPath)
     }
   }, [
     isMountedRef

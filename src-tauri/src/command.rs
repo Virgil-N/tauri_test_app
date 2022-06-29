@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-28 02:58:59
+ * Last Modified: 2022-06-29 10:41:00
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -30,7 +30,8 @@ pub async fn disk_free_size(path: String) -> u64 {
   let sys = System::new_all();
   for disk in sys.disks() {
     if Path::new(&path).starts_with(disk.mount_point()) {
-      return disk.available_space();
+      println!("{:?}",disk.available_space());
+      return disk.available_space() / (1024 * 1024 * 1024);
     }
   }
   0

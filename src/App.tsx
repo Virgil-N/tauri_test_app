@@ -46,10 +46,10 @@ function App() {
 
   useEffect(() => {
     if (isMountedRef.current) {
-      // const close_splashscreen_timeout = setTimeout(() => {
-      //   invoke('close_splashscreen')
-      //   window.clearInterval(close_splashscreen_timeout)
-      // }, 3000)
+      const close_splashscreen_timeout = setTimeout(() => {
+        invoke('close_splashscreen')
+        window.clearInterval(close_splashscreen_timeout)
+      }, 2000)
     }
   }, [
     isMountedRef
