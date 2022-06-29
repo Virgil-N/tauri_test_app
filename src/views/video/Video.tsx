@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-29 10:42:09
+ * Last Modified: 2022-06-29 03:00:28
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -91,7 +91,7 @@ function Video() {
         alignItems='stretch'
       >
         <Flex alignItems='baseline' mb='1rem'>
-          <Text textAlign='right' w='6rem' ml='1rem' mr='1rem'>URL</Text>
+          <Text textAlign='right' w='8rem' ml='1rem' mr='1rem'>URL</Text>
           <FormControl mr='2rem'>
             <InputGroup>
               <Input
@@ -103,7 +103,7 @@ function Video() {
           </FormControl>
         </Flex>
         <Flex alignItems='baseline' mb='1rem'>
-          <Text textAlign='right' w='6rem' ml='1rem' mr='1rem'>Save Path</Text>
+          <Text textAlign='right' w='8rem' ml='1rem' mr='1rem'>Save Path</Text>
           <FormControl mr='2rem'>
             <InputGroup size='sm'>
               <Input value={currentPath} readOnly />

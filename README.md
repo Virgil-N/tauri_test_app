@@ -3,6 +3,7 @@
 ## FEATURES
 
 - [x] splashscreen
+- [] bilibili video download
 
 ## TEMP
 
