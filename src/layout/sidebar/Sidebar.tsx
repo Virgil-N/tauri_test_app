@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-28 11:36:31
+ * Last Modified: 2022-07-04 09:11:00
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -40,7 +40,7 @@ function Sidebar() {
         borderRadius='6%'
         color='teal'
         isActive={activeIndex === 0}
-        onClick={(e: any) => pressBtn(e, 0, '/video')}
+        onClick={(e: any) => pressBtn(e, 0, '/download')}
       />
       <CustomIconButton
         as={TbList}

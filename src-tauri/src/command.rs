@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-29 10:41:00
+ * Last Modified: 2022-07-04 09:44:17
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -29,6 +29,7 @@ pub async fn exists(path: String) -> bool {
 pub async fn disk_free_size(path: String) -> u64 {
   let sys = System::new_all();
   for disk in sys.disks() {
+    println!("{} - {:?}", path, disk.mount_point());
     if Path::new(&path).starts_with(disk.mount_point()) {
       println!("{:?}",disk.available_space());
       return disk.available_space() / (1024 * 1024 * 1024);

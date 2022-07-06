@@ -4,7 +4,7 @@ import { globalCss } from '@stitches/react'
 import Login from '@/pages/login/Login'
 import Layout from '@/layout/Layout'
 import Home from '@/views/home/Home'
-import Video from '@/views/video/Video'
+import Download from '@/views/download/Download'
 import Queue from '@/views/queue/Queue'
 import Convert from '@/views/convert/Convert'
 import Settings from '@/views/settings/Settings'
@@ -61,7 +61,7 @@ function App() {
         <Route index element={<Login />}></Route>
         <Route element={<Layout />}>
           {/* <Route path='/home' element={<Home />}></Route> */}
-          <Route path='/video' element={<Video />}></Route>
+          <Route path='/download' element={<Download />}></Route>
           <Route path='/queue' element={<Queue />}></Route>
           <Route path='/convert' element={<Convert />}></Route>
           <Route path='/settings' element={<Settings />}></Route>

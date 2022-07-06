@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-28 10:57:37
+ * Last Modified: 2022-07-04 09:11:12
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -87,7 +87,7 @@ function Login() {
   
   const userLogin = () => {
     console.log(name, password)
-    navigate('/video')
+    navigate('/download')
   }
 
   useEffect(() => {
@@ -99,7 +99,7 @@ function Login() {
   ])
 
   return (
-    !isNameError ? <Navigate to="/video" replace={true} /> :
+    !isNameError ? <Navigate to="/download" replace={true} /> :
     <Center
       w='100%'
       h='100%'

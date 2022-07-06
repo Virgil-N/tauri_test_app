@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-29 03:00:28
+ * Last Modified: 2022-07-04 09:24:08
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -41,7 +41,7 @@ const useIsMountedRef = () => {
   return isMountedRef
 }
 
-function Video() {
+function Download() {
   const isMountedRef = useIsMountedRef()
   const [url, setUrl] = useState('')
   const [currentPath, setCurrentPath] = useState('')
@@ -62,6 +62,7 @@ function Video() {
 
   const showFreeSpace = async (path: String) => {
     const freeSpace = await invoke('disk_free_size', {path}) as SetStateAction<number>
+    console.log(freeSpace)
     setAvailableSpace(freeSpace)
   }
 
@@ -90,8 +91,8 @@ function Video() {
         justifyContent='start'
         alignItems='stretch'
       >
-        <Flex alignItems='baseline' mb='1rem'>
-          <Text textAlign='right' w='8rem' ml='1rem' mr='1rem'>URL</Text>
+        <Flex alignItems='center' mb='1rem'>
+          <Text textAlign='right' w='6rem' ml='1rem' mr='1rem'>URL</Text>
           <FormControl mr='2rem'>
             <InputGroup>
               <Input
@@ -102,8 +103,8 @@ function Video() {
             </InputGroup>
           </FormControl>
         </Flex>
-        <Flex alignItems='baseline' mb='1rem'>
-          <Text textAlign='right' w='8rem' ml='1rem' mr='1rem'>Save Path</Text>
+        <Flex alignItems='center' mb='1rem'>
+          <Text textAlign='right' w='6rem' ml='1rem' mr='1rem'>Save Path</Text>
           <FormControl mr='2rem'>
             <InputGroup size='sm'>
               <Input value={currentPath} readOnly />
@@ -147,4 +148,4 @@ function Video() {
   )
 }
 
-export default Video
+export default Download

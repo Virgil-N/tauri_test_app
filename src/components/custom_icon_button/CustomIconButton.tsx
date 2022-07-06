@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-27 04:50:40
+ * Last Modified: 2022-07-04 09:13:22
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -21,12 +21,13 @@ import { css } from '@stitches/react';
 function CustomIconButton(props: any) {
 
   const styledBox = css({
-    display:'flex',
-    flexDirection:'column',
-    justifyContent:'center',
-    alignItems:'center',
-    fontWeight:'semibold',
-    transition:'all 0.2s cubic-bezier(.08,.52,.52,1)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontWeight: 'semibold',
+    outline: 'none',
+    transition: 'all 0.2s cubic-bezier(.08,.52,.52,1)',
   })
   
   return (

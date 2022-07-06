@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-06-29 02:59:19
+ * Last Modified: 2022-07-04 09:17:48
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -80,8 +80,8 @@ function Settings() {
         justifyContent='start'
         alignItems='stretch'
       >
-        <Flex alignItems='baseline' mb='1rem'>
-          <Text textAlign='right' w='10rem' ml='1rem' mr='1rem'>Default Save Path</Text>
+        <Flex alignItems='center' mb='1rem'>
+          <Text textAlign='right' w='11rem' ml='1rem' mr='1rem'>Default Save Path</Text>
           <FormControl mr='2rem'>
             <InputGroup size='sm'>
               <Input value={defaultPath} readOnly />
