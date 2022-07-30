@@ -10,19 +10,7 @@ import Convert from '@/views/convert/Convert'
 import Settings from '@/views/settings/Settings'
 import { invoke } from '@tauri-apps/api/tauri'
 
-const useIsMountedRef = () => {
-  const isMountedRef = useRef(false)
-  useEffect(() => {
-    isMountedRef.current = true;
-    return () => {
-      isMountedRef.current = false
-    }
-  })
-  return isMountedRef
-}
-
 function App() {
-  const isMountedRef = useIsMountedRef()
   // 等tauri版本更新修复这个bug
   // const invoke = window.__TAURI__.invoke
 
@@ -45,15 +33,11 @@ function App() {
   globalStyles()
 
   useEffect(() => {
-    if (isMountedRef.current) {
-      const close_splashscreen_timeout = setTimeout(() => {
-        invoke('close_splashscreen')
-        window.clearInterval(close_splashscreen_timeout)
-      }, 2000)
-    }
-  }, [
-    isMountedRef
-  ])
+    const close_splashscreen_timeout = setTimeout(() => {
+      invoke('close_splashscreen')
+      window.clearInterval(close_splashscreen_timeout)
+    }, 2000)
+  }, [])
 
   return (
     <BrowserRouter basename={import.meta.env.TAURI_BASE_URL}>

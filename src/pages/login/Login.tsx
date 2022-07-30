@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-07-04 09:11:12
+ * Last Modified: 2022-07-30 23:08:27
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -31,19 +31,7 @@ import {
 import { TbLogin, TbUser, TbLock } from 'react-icons/tb'
 import { styled } from '@stitches/react'
 
-const useIsMountedRef = () => {
-  const isMountedRef = useRef(false)
-  useEffect(() => {
-    isMountedRef.current = true;
-    return () => {
-      isMountedRef.current = false
-    }
-  })
-  return isMountedRef
-}
-
 function Login() {
-  const isMountedRef = useIsMountedRef()
   const navigate = useNavigate()
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
@@ -91,12 +79,8 @@ function Login() {
   }
 
   useEffect(() => {
-    if (isMountedRef.current) {
-      // console.log(import.meta.env)
-    }
-  }, [
-    isMountedRef
-  ])
+    // console.log(import.meta.env)
+  }, [])
 
   return (
     !isNameError ? <Navigate to="/download" replace={true} /> :

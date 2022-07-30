@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-07-04 09:17:48
+ * Last Modified: 2022-07-30 23:09:39
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -30,19 +30,7 @@ import {
 } from '@chakra-ui/react'
 import { invoke, dialog } from '@tauri-apps/api'
 
-const useIsMountedRef = () => {
-  const isMountedRef = useRef(false)
-  useEffect(() => {
-    isMountedRef.current = true;
-    return () => {
-      isMountedRef.current = false
-    }
-  })
-  return isMountedRef
-}
-
 function Settings() {
-  const isMountedRef = useIsMountedRef()
   const [defaultPath, setDefaultPath] = useState('')
   const [availableSpace, setAvailableSpace] = useState(0)
 
@@ -60,12 +48,8 @@ function Settings() {
   }
 
   useEffect(() => {
-    if (isMountedRef.current) {
-      showFreeSpace(defaultPath)
-    }
-  }, [
-    isMountedRef
-  ])
+    showFreeSpace(defaultPath)
+  }, [])
 
   return (
     <Flex
