@@ -21,6 +21,7 @@ tauri = { version = "1.0.0", features = ["dialog-open", "fs-create-dir", "fs-rea
 hyper = { version = "0.14", features = ["full"] }
 tokio = { version = "1", features = ["full"] }
 sysinfo = "0.25.0"
+whoami = "1.2.1"
 
 [features]
 # by default Tauri runs in production mode

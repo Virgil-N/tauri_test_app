@@ -64,6 +64,7 @@ dependencies = [
  "tauri",
  "tauri-build",
  "tokio",
+ "whoami",
 ]
 
 [[package]]
@@ -3494,6 +3495,16 @@ dependencies = [
  "thiserror",
  "windows",
  "windows-bindgen",
+]
+
+[[package]]
+name = "whoami"
+version = "1.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "524b58fa5a20a2fb3014dd6358b70e6579692a56ef6fce928834e488f42f65e8"
+dependencies = [
+ "wasm-bindgen",
+ "web-sys",
 ]
 
 [[package]]

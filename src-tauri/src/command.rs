@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-07-30 23:20:53
+ * Last Modified: 2022-07-31 22:01:22
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
@@ -13,6 +13,7 @@
 
 use tauri::Manager;
 use std::path::Path;
+use whoami;
 use sysinfo::{DiskExt, System, SystemExt};
 
 #[tauri::command]
@@ -28,9 +29,16 @@ pub async fn exists(path: String) -> bool {
 #[tauri::command]
 pub async fn disk_free_size(path: String) -> u64 {
   let sys = System::new_all();
+  let os = match whoami::platform() {
+    v if v == whoami::Platform::MacOS => "MacOS",
+    v if v == whoami::Platform::Windows => "Windows",
+    _ => "unknown OS",
+  };
   for disk in sys.disks() {
-    println!("{} - {:?}", path, disk.mount_point());
-    if Path::new(&path).starts_with(disk.mount_point()) {
+    if os == "MacOS" && disk.name() == "Data" {
+      return disk.available_space() / (1024 * 1024 * 1024);
+    }
+    if os == "Windows" && Path::new(&path).starts_with(disk.mount_point()) {
       println!("{:?}",disk.available_space());
       return disk.available_space() / (1024 * 1024 * 1024);
     }
