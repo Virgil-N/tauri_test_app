@@ -8,26 +8,9 @@ import Queue from "@/views/queue/Queue";
 import Convert from "@/views/convert/Convert";
 import Settings from "@/views/settings/Settings";
 import { invoke } from "@tauri-apps/api/tauri";
-import { globalCss } from "@stitches/react";
+import "@/styles/index.scss";
 
 function App() {
-  const globalStyles = globalCss({
-    "*": {
-      margin: 0,
-      padding: 0,
-    },
-    "html, body": {
-      width: "100VW",
-      height: "100VH",
-      fontSize: "1em",
-    },
-    "#root": {
-      width: "100VW",
-      height: "100VH",
-    },
-  });
-
-  globalStyles();
   useEffect(() => {
     const close_splashscreen_timeout = setTimeout(() => {
       invoke("close_splashscreen");

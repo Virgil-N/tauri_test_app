@@ -9,6 +9,7 @@
 
 ## TODO
 
+- 移除stitches，使用css module代替。
 - 持久化方案。
 
 ## DONE

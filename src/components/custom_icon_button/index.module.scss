@@ -1,0 +1,25 @@
+/*
+ * Created Date: 2023-02-09 21:24:01
+ * Author: Virgil-N
+ * Description:
+ * -----
+ * Last Modified: 2023-02-09 21:36:02
+ * Modified By: Virgil-N (ghost@earth.com)
+ * -----
+ * Copyright (c) 2019 - 2023 ⚐
+ * Virgil-N will save your soul!
+ * -----
+ */
+.root {
+  :global {
+    .box_style {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-weight: 500;
+      outline: none;
+      transition: all 0.2s cubic-bezier(0.08, 0.52, 0.52, 1);
+    }
+  }
+}
