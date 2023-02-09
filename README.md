@@ -9,13 +9,13 @@
 
 ## TODO
 
-- 移除stitches，使用css module代替。
 - 持久化方案。
 
 ## DONE
 
 - splashscreen已解决，原因是函数前未添加`async`关键字，且更新tauri版本后api问题得以解决。
 - `command not found`错误已解决，原因是`invoke_handler`函数只能调用一次。
+- 移除stitches，使用css module代替。
 
 ## PROJECT
 
