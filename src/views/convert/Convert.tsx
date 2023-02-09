@@ -11,7 +11,7 @@
  * -----
  */
 
-import { useRef, useEffect, useState, SetStateAction } from 'react'
+import { useRef, useEffect, useState, SetStateAction } from "react";
 import {
   Box,
   Text,
@@ -26,29 +26,28 @@ import {
   FormHelperText,
   FormErrorMessage,
   InputLeftElement,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 
 function Convert() {
-  const [url, setUrl] = useState('')
+  const [url, setUrl] = useState("");
 
   const handleInputUrl = (e: any) => {
-    console.log(e.target.value)
-    setUrl(e.target.value)
-  }
+    console.log(e.target.value);
+    setUrl(e.target.value);
+  };
 
   const startDownload = () => {
-    console.log(url)
-  }
+    console.log(url);
+  };
 
   return (
     <Flex
-      flexGrow='1'
-      flexDirection='column'
-      justifyContent='space-between'
-      alignItems='stretch'
-    >
-    </Flex>
-  )
+      flexGrow="1"
+      flexDirection="column"
+      justifyContent="space-between"
+      alignItems="stretch"
+    ></Flex>
+  );
 }
 
-export default Convert
+export default Convert;

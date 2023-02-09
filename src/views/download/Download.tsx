@@ -3,15 +3,15 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-07-30 23:07:40
- * Modified By: Virgil-N (lieut9011@126.com)
+ * Last Modified: 2023-02-09 21:08:14
+ * Modified By: Virgil-N (ghost@earth.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
  * Virgil-N will save your soul!
  * -----
  */
 
-import { useRef, useEffect, useState, SetStateAction } from 'react'
+import { useRef, useEffect, useState, SetStateAction } from "react";
 import {
   Box,
   Text,
@@ -27,109 +27,87 @@ import {
   InputRightAddon,
   FormErrorMessage,
   InputLeftElement,
-} from '@chakra-ui/react'
-import { invoke, dialog, fs } from '@tauri-apps/api'
+} from "@chakra-ui/react";
+import { invoke, dialog, fs } from "@tauri-apps/api";
 
 function Download() {
-  const [url, setUrl] = useState('')
-  const [currentPath, setCurrentPath] = useState('')
-  const [availableSpace, setAvailableSpace] = useState(0)
+  const [url, setUrl] = useState("");
+  const [currentPath, setCurrentPath] = useState("");
+  const [availableSpace, setAvailableSpace] = useState(0);
 
   const handleInputUrl = (e: any) => {
-    console.log(e.target.value)
-    setUrl(e.target.value)
-  }
-
-  const selectFolder = async () => {
-    const selected = await dialog.open({directory: true, multiple: false})
-    if (selected != null) {
-      setCurrentPath(selected.toString())
-      showFreeSpace(selected.toString())
-    }
-  }
+    console.log(e.target.value);
+    setUrl(e.target.value);
+  };
 
   const showFreeSpace = async (path: String) => {
-    const freeSpace = await invoke('disk_free_size', {path}) as SetStateAction<number>
-    console.log(freeSpace)
-    setAvailableSpace(freeSpace)
-  }
+    const freeSpace = (await invoke("disk_free_size", {
+      path,
+    })) as SetStateAction<number>;
+    console.log(freeSpace);
+    setAvailableSpace(freeSpace);
+  };
+
+  const selectFolder = async () => {
+    const selected = await dialog.open({ directory: true, multiple: false });
+    if (selected != null) {
+      setCurrentPath(selected.toString());
+      showFreeSpace(selected.toString());
+    }
+  };
 
   const startDownload = () => {
-    console.log(url)
-  }
+    console.log(url);
+  };
 
   useEffect(() => {
-    showFreeSpace(currentPath)
-  }, [])
+    showFreeSpace(currentPath);
+  }, []);
 
   return (
     <Flex
-      flexGrow='1'
-      flexDirection='column'
-      justifyContent='space-between'
-      alignItems='stretch'
+      flexGrow="1"
+      flexDirection="column"
+      justifyContent="space-between"
+      alignItems="stretch"
     >
       <Flex
-        flexGrow='1'
-        flexDirection='column'
-        justifyContent='start'
-        alignItems='stretch'
+        flexGrow="1"
+        flexDirection="column"
+        justifyContent="start"
+        alignItems="stretch"
       >
-        <Flex alignItems='center' mb='1rem'>
-          <Text textAlign='right' w='6rem' ml='1rem' mr='1rem'>URL</Text>
-          <FormControl mr='2rem'>
+        <Flex alignItems="center" mb="1rem">
+          <Text textAlign="right" w="6rem" ml="1rem" mr="1rem">
+            URL
+          </Text>
+          <FormControl mr="2rem">
             <InputGroup>
-              <Input
-                size='sm'
-                value={url}
-                onChange={handleInputUrl}
-              />
-            </InputGroup>
-          </FormControl>
-        </Flex>
-        <Flex alignItems='center' mb='1rem'>
-          <Text textAlign='right' w='6rem' ml='1rem' mr='1rem'>Save Path</Text>
-          <FormControl mr='2rem'>
-            <InputGroup size='sm'>
-              <Input value={currentPath} readOnly />
-              <InputRightAddon children={`Available disk space: ${currentPath === '' ?  ' ' : availableSpace} GB`} />
-              <Button
-                w='6rem'
-                ml='1rem'
-                colorScheme='teal'
-                variant='solid'
-                onClick={selectFolder}
-              >
-                Select
-              </Button>
+              <Input size="sm" value={url} onChange={handleInputUrl} />
             </InputGroup>
           </FormControl>
         </Flex>
       </Flex>
-      <Box h='4rem' flexShrink='0'>
+      <Box h="4rem" flexShrink="0">
         <Stack
-          h='100%'
-          direction='row'
-          display='flex'
-          flexDirection='row'
-          justifyContent='center'
-          alignItems='center'
+          h="100%"
+          direction="row"
+          display="flex"
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
           spacing={4}
         >
-          <Button
-            colorScheme='teal'
-            variant='solid'
-            onClick={startDownload}
-          >
+          <Button colorScheme="teal" variant="solid" onClick={startDownload}>
             Download
           </Button>
-          <Button colorScheme='teal' variant='outline'>
+          <Button colorScheme="teal" variant="outline">
             Cancel
           </Button>
         </Stack>
       </Box>
     </Flex>
-  )
+  );
 }
 
-export default Download
+export default Download;

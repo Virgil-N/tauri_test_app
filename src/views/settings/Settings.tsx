@@ -3,15 +3,15 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2022-07-30 23:09:39
- * Modified By: Virgil-N (lieut9011@126.com)
+ * Last Modified: 2023-02-09 21:07:55
+ * Modified By: Virgil-N (ghost@earth.com)
  * -----
  * Copyright (c) 2019 - 2022 ⚐
  * Virgil-N will save your soul!
  * -----
  */
 
-import { useRef, useEffect, useState, SetStateAction } from 'react'
+import { useRef, useEffect, useState, SetStateAction } from "react";
 import {
   Box,
   Text,
@@ -27,54 +27,63 @@ import {
   InputRightAddon,
   FormErrorMessage,
   InputLeftElement,
-} from '@chakra-ui/react'
-import { invoke, dialog } from '@tauri-apps/api'
+} from "@chakra-ui/react";
+import { invoke, dialog } from "@tauri-apps/api";
 
 function Settings() {
-  const [defaultPath, setDefaultPath] = useState('')
-  const [availableSpace, setAvailableSpace] = useState(0)
-
-  const selectFolder = async () => {
-    const selected = await dialog.open({directory: true, multiple: false})
-    if (selected != null) {
-      setDefaultPath(selected.toString())
-      showFreeSpace(selected.toString())
-    }
-  }
+  const [defaultPath, setDefaultPath] = useState("");
+  const [availableSpace, setAvailableSpace] = useState(0);
 
   const showFreeSpace = async (path: String) => {
-    const freeSpace = await invoke('disk_free_size', {path}) as SetStateAction<number>
-    setAvailableSpace(freeSpace)
-  }
+    const freeSpace = (await invoke("disk_free_size", {
+      path,
+    })) as SetStateAction<number>;
+    setAvailableSpace(freeSpace);
+  };
+
+  const selectFolder = async () => {
+    const selected = await dialog.open({ directory: true, multiple: false });
+    if (selected != null) {
+      setDefaultPath(selected.toString());
+      showFreeSpace(selected.toString());
+    }
+  };
 
   useEffect(() => {
-    showFreeSpace(defaultPath)
-  }, [])
+    showFreeSpace(defaultPath);
+  }, []);
 
   return (
     <Flex
-      flexGrow='1'
-      flexDirection='column'
-      justifyContent='space-between'
-      alignItems='stretch'
+      flexGrow="1"
+      flexDirection="column"
+      justifyContent="space-between"
+      alignItems="stretch"
     >
       <Flex
-        flexGrow='1'
-        flexDirection='column'
-        justifyContent='start'
-        alignItems='stretch'
+        flexGrow="1"
+        flexDirection="column"
+        justifyContent="start"
+        alignItems="stretch"
       >
-        <Flex alignItems='center' mb='1rem'>
-          <Text textAlign='right' w='11rem' ml='1rem' mr='1rem'>Default Save Path</Text>
-          <FormControl mr='2rem'>
-            <InputGroup size='sm'>
+        <Flex alignItems="center" mb="1rem">
+          <Text textAlign="right" w="11rem" ml="1rem" mr="1rem">
+            Default Save Path
+          </Text>
+          <FormControl mr="2rem">
+            <InputGroup size="sm">
               <Input value={defaultPath} readOnly />
-              <InputRightAddon children={`Available disk space: ${defaultPath === '' ?  ' ' : availableSpace} GB`} />
+              <InputRightAddon
+                // eslint-disable-next-line react/no-children-prop
+                children={`Available disk space: ${
+                  defaultPath === "" ? " " : availableSpace
+                } GB`}
+              />
               <Button
-                w='6rem'
-                ml='1rem'
-                colorScheme='teal'
-                variant='solid'
+                w="6rem"
+                ml="1rem"
+                colorScheme="teal"
+                variant="solid"
                 onClick={selectFolder}
               >
                 Select
@@ -83,30 +92,30 @@ function Settings() {
           </FormControl>
         </Flex>
       </Flex>
-      <Box h='4rem' flexShrink='0'>
+      <Box h="4rem" flexShrink="0">
         <Stack
-          h='100%'
-          direction='row'
-          display='flex'
-          flexDirection='row'
-          justifyContent='center'
-          alignItems='center'
+          h="100%"
+          direction="row"
+          display="flex"
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
           spacing={4}
         >
           <Button
-            colorScheme='teal'
-            variant='solid'
+            colorScheme="teal"
+            variant="solid"
             // onClick={}
           >
             Save
           </Button>
-          <Button colorScheme='teal' variant='outline'>
+          <Button colorScheme="teal" variant="outline">
             Cancel
           </Button>
         </Stack>
       </Box>
     </Flex>
-  )
+  );
 }
 
-export default Settings
+export default Settings;

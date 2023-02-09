@@ -11,7 +11,7 @@
  * -----
  */
 
-import { Outlet } from 'react-router-dom'
+import { Outlet } from "react-router-dom";
 import {
   Box,
   Flex,
@@ -27,34 +27,29 @@ import {
   FormHelperText,
   FormErrorMessage,
   InputLeftElement,
-} from '@chakra-ui/react'
-import Sidebar from '@/layout/sidebar/Sidebar'
+} from "@chakra-ui/react";
+import Sidebar from "@/layout/sidebar/Sidebar";
 
 function Layout() {
   return (
-    <Flex
-      w='100%'
-      h='100%'
-      direction='row'
-      alignItems='stretch'
-    >
-      <Box w='7.2rem' flexShrink='0' padding='0.6rem'>
+    <Flex w="100%" h="100%" direction="row" alignItems="stretch">
+      <Box w="7.2rem" flexShrink="0" padding="0.6rem">
         <Sidebar />
       </Box>
-      <Divider orientation='vertical' />
+      <Divider orientation="vertical" />
       <Box
-        flexGrow='1'
-        display='flex'
-        flexDirection='row'
-        pt='1.2rem'
-        pb='1.2rem'
-        pl='0.6rem'
-        pr='0.6rem'
+        flexGrow="1"
+        display="flex"
+        flexDirection="row"
+        pt="1.2rem"
+        pb="1.2rem"
+        pl="0.6rem"
+        pr="0.6rem"
       >
         <Outlet />
       </Box>
     </Flex>
-  )
+  );
 }
 
-export default Layout
+export default Layout;

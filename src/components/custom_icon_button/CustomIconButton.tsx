@@ -11,34 +11,29 @@
  * -----
  */
 
-import {
-  Box,
-  Icon,
-  Text,
-} from '@chakra-ui/react'
-import { css } from '@stitches/react';
+import { Box, Icon, Text } from "@chakra-ui/react";
+import { css } from "@stitches/react";
 
 function CustomIconButton(props: any) {
-
   const styledBox = css({
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontWeight: 'semibold',
-    outline: 'none',
-    transition: 'all 0.2s cubic-bezier(.08,.52,.52,1)',
-  })
-  
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    fontWeight: "semibold",
+    outline: "none",
+    transition: "all 0.2s cubic-bezier(.08,.52,.52,1)",
+  });
+
   return (
     <Box
       className={styledBox()}
-      as='button'
+      as="button"
       width={props.boxSize}
       height={props.boxSize}
       borderRadius={props.borderRadius}
       color={props.color}
-      backgroundColor={props.isActive ? `${props.color}.50` : 'transparent'}
+      backgroundColor={props.isActive ? `${props.color}.50` : "transparent"}
       _hover={{
         bg: `${props.color}.50`,
       }}
@@ -51,17 +46,10 @@ function CustomIconButton(props: any) {
       }}
       onClick={props.onClick}
     >
-      <Icon
-        as={props.as}
-        boxSize={props.iconSize}
-      />
-      <Text
-        fontSize={props.fontSize}
-      >
-        {props.text}
-      </Text>
+      <Icon as={props.as} boxSize={props.iconSize} />
+      <Text fontSize={props.fontSize}>{props.text}</Text>
     </Box>
-  )
+  );
 }
 
-export default CustomIconButton
+export default CustomIconButton;

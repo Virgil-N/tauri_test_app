@@ -11,7 +11,7 @@
  * -----
  */
 
-import { useRef, useEffect, useState, SetStateAction } from 'react'
+import { useRef, useEffect, useState, SetStateAction } from "react";
 import {
   Box,
   Text,
@@ -26,19 +26,17 @@ import {
   FormHelperText,
   FormErrorMessage,
   InputLeftElement,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 
 function Queue() {
-
   return (
     <Flex
-      flexGrow='1'
-      flexDirection='column'
-      justifyContent='space-between'
-      alignItems='stretch'
-    >
-    </Flex>
-  )
+      flexGrow="1"
+      flexDirection="column"
+      justifyContent="space-between"
+      alignItems="stretch"
+    ></Flex>
+  );
 }
 
-export default Queue
+export default Queue;
